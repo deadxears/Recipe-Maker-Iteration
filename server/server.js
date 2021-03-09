@@ -12,7 +12,7 @@ const apiRouter = require('./routes/api');
 const PORT = 3000;
 
 mongoose.connect(
-  `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.bafl3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+  `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.gkvfy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.connection.once('open', () => {
