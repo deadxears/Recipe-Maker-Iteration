@@ -14,15 +14,15 @@ function RecipesContainer() {
   if (inventory === null) return 'inLoading';
 
   useEffect(() => {
-    console.log('inventory', inventory)
+    // console.log('inventory', inventory)
     axios
       .post('./api/recipes', inventory)
       .then((res) => {
-        console.log('res.data', res.data);
+        // console.log('res.data', res.data);
         setRecipe(res.data);
       })
       .catch((err) => console.log(err));
-  }, [inventory]);
+  }, []);
 
   if (recipe === null) {
     return 'Loading...';
