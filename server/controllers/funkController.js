@@ -51,7 +51,11 @@ funkController.getRecipes = async (req, res, next) => {
 
   let keyIndex = 0; //2;
   const apiKeys = [
-    'f02858b6ebaa4661b821b11a81417390'
+    'f02858b6ebaa4661b821b11a81417390',
+    '44bd1c5c07cd4e6c9453253045409cac',
+    '3646e9cc47d3411f9a8935b500812191',
+    '481e5f55d1b74e77b6a2fc9ae79c9d86',
+    '4cf36a6587f14b0696a49a36121f1275'
   ];
   const howManyRecipes = 5;
 
@@ -80,6 +84,12 @@ funkController.getRecipes = async (req, res, next) => {
     itemsNames = useThese;
   }
 
+console.log(33333, items)
+console.log(44444, el)
+console.log('bucket2', bucket2)
+console.log('bucket3', bucket3)
+
+
   console.log('itemsNames:', itemsNames);
 
   let commaItems = itemsNames.join(',+');
@@ -88,7 +98,7 @@ funkController.getRecipes = async (req, res, next) => {
 
   // if (!commaItems.length) throw new Error('No items to use!');
   let recipesListFinal = [];
-
+console.log(99999, extras)
   while (extras.length) {
     console.log('extras:', extras);
     try {
