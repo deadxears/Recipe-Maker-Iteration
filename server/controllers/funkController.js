@@ -67,28 +67,24 @@ funkController.getRecipes = async (req, res, next) => {
 
   console.log('useThese:', useThese);
 
-  if (!useThese.length) {
-    const bucket1 = items.filter((el) => itemsObj[el]['bucketNumber'] === 0);
-    const bucket2 = items.filter((el) => itemsObj[el]['bucketNumber'] === 1);
-    const bucket3 = items.filter((el) => itemsObj[el]['bucketNumber'] === 2);
-    console.log('bucket1:', bucket1);
-    console.log('bucket2:', bucket2);
-    console.log('bucket3:', bucket3);
+  // if (!useThese.length) {
+  //   const bucket1 = items.filter((el) => itemsObj[el]['bucketNumber'] === 0);
+  //   const bucket2 = items.filter((el) => itemsObj[el]['bucketNumber'] === 1);
+  //   const bucket3 = items.filter((el) => itemsObj[el]['bucketNumber'] === 2);
+  //   console.log('bucket1:', bucket1);
+  //   console.log('bucket2:', bucket2);
+  //   console.log('bucket3:', bucket3);
 
-    if (bucket1.length) {
-      itemsNames = itemsNames.concat(bucket1);
-    }
-    extras = extras.concat(bucket2).concat(bucket3);
-    console.log('extras:', extras);
-  } else {
-    itemsNames = useThese;
+    // if (bucket1.length) {
+    //   itemsNames = itemsNames.concat(bucket1);
+    // }
+   // extras = extras.concat(bucket2).concat(bucket3);
+   // console.log('extras:', extras);
+   
+  //else {
+   itemsNames = useThese;
     extras = useThese
-  }
-
-console.log(33333, items)
-console.log(44444, el)
-console.log('bucket2', bucket2)
-console.log('bucket3', bucket3)
+  //}
 
 
   console.log('itemsNames:', itemsNames);
