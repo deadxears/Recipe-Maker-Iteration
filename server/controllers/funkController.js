@@ -71,6 +71,7 @@ funkController.getRecipes = async (req, res, next) => {
     itemsNames = useThese;
     //extras = useThese
 
+
   console.log('itemsNames:', itemsNames);
 
   let commaItems = itemsNames.join(',+');
@@ -79,9 +80,9 @@ funkController.getRecipes = async (req, res, next) => {
 
   // if (!commaItems.length) throw new Error('No items to use!');
   let recipesListFinal = [];
-
   while (useThese.length) {
     console.log('useThese:', useThese);
+
     try {
       const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${commaItems}&number=${howManyRecipes}&ranking=2&apiKey=${apiKeys[keyIndex]}`;
 
