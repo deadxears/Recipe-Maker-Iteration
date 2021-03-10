@@ -12,6 +12,8 @@ function useSetRecipe() {
 
 function RecipeProvider({ children }) {
   const [recipe, setRecipes] = useState(null);
+  console.log(recipe, "recipppppppe")
+  console.log(children, "chilllldren")
 
   function setRecipe(newState) {
     setRecipes(newState);
