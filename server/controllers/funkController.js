@@ -49,7 +49,7 @@ funkController.deleteItems = (req, res, next) => {
 funkController.getRecipes = async (req, res, next) => {
   console.log('Hit getRecipes!!', req.body);
 
-  let keyIndex = 3; //2;
+  let keyIndex = 4; //2;
   const apiKeys = [
     'f02858b6ebaa4661b821b11a81417390',
     '44bd1c5c07cd4e6c9453253045409cac',
