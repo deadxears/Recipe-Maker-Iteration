@@ -83,15 +83,16 @@ funkController.getRecipes = async (req, res, next) => {
     console.log('extras:', extras);
   } else {
     itemsNames = useThese;
+    extras = useThese
   }
 
   console.log('itemsNames:', itemsNames);
 
   let commaItems = itemsNames.join(',+');
-
+  
   console.log('commaItems:', commaItems);
 
-  //if (!commaItems.length) throw new Error('No items to use!');
+  // if (!commaItems.length) throw new Error('No items to use!');
   let recipesListFinal = [];
 
   while (extras.length) {
@@ -103,7 +104,9 @@ funkController.getRecipes = async (req, res, next) => {
       const recipesListData = await fetch(url);
       const recipesList = await recipesListData.json();
 
-      if (!Array.isArray(recipesList)) throw new Error('Invalid recipes list');
+      // if (!Array.isArray(recipesList)) throw new Error('Invalid recipes list');
+
+      if (recipesList.length===0) throw new Error('Invalid recipes list');
 
       console.log('recipesList:', recipesList);
       if (recipesList.length >= 5) {
