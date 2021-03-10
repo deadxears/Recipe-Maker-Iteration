@@ -50,13 +50,14 @@ funkController.getRecipes = async (req, res, next) => {
   
   console.log('Hit getRecipes!!', req.body);
 
-  let keyIndex = 2//3; //2;
+  let keyIndex = 5; //2;
   const apiKeys = [
     'f02858b6ebaa4661b821b11a81417390',
     '44bd1c5c07cd4e6c9453253045409cac',
     '3646e9cc47d3411f9a8935b500812191',
     '481e5f55d1b74e77b6a2fc9ae79c9d86',
-    '4cf36a6587f14b0696a49a36121f1275'
+    '4cf36a6587f14b0696a49a36121f1275',
+    '05474ef33a92407da94abe6e9afadd75'
   ];
   const howManyRecipes = 5;
 
@@ -64,27 +65,14 @@ funkController.getRecipes = async (req, res, next) => {
   const itemsObj = req.body;
   const items = Object.keys(itemsObj);
   const useThese = items.filter((el) => itemsObj[el]['use']);
-  let extras = [];
+  //let extras = [];
 
   console.log('useThese:', useThese);
 
-  if (!useThese.length) {
-    const bucket1 = items.filter((el) => itemsObj[el]['bucketNumber'] === 0);
-    const bucket2 = items.filter((el) => itemsObj[el]['bucketNumber'] === 1);
-    const bucket3 = items.filter((el) => itemsObj[el]['bucketNumber'] === 2);
-    console.log('bucket1:', bucket1);
-    console.log('bucket2:', bucket2);
-    console.log('bucket3:', bucket3);
-
-    if (bucket1.length) {
-      itemsNames = itemsNames.concat(bucket1);
-    }
-    extras = extras.concat(bucket2).concat(bucket3);
-    console.log('extras:', extras);
-  } else {
+  
     itemsNames = useThese;
-    extras = useThese
-  }
+    //extras = useThese
+
 
   console.log('itemsNames:', itemsNames);
 
@@ -94,9 +82,9 @@ funkController.getRecipes = async (req, res, next) => {
 
   // if (!commaItems.length) throw new Error('No items to use!');
   let recipesListFinal = [];
+  while (useThese.length) {
+    console.log('useThese:', useThese);
 
-  while (extras.length) {
-    console.log('extras:', extras);
     try {
       const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${commaItems}&number=${howManyRecipes}&ranking=2&apiKey=${apiKeys[keyIndex]}`;
 
@@ -113,7 +101,7 @@ funkController.getRecipes = async (req, res, next) => {
         recipesListFinal = recipesList;
         break;
       } else {
-        commaItems += ',+' + extras.shift();
+        commaItems += ',+' + useThese.shift();
         recipesListFinal = recipesList;
       }
     } catch (err) {
