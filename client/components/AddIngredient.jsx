@@ -9,7 +9,7 @@ function AddIngredient({ bucketNumber }) {
 
   function addIng(ing) {
     if (inventory[ing]) return window.alert('Already in inventory!');
-    const tempIng = { [ing]: { itemName: `${ing}`, bucketNumber: bucketNumber, use: false } };
+    const tempIng = { [ing]: { itemName: `${ing}`, bucketNumber: bucketNumber, use: false} };
     const newBucket = { ...inventory, ...tempIng };
     axios
       .post('./api/inventory', tempIng)
@@ -33,7 +33,7 @@ function AddIngredient({ bucketNumber }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={ing} onChange={(e) => setIng(e.target.value)} placeholder="Add Ingredient.." />
+      <input id="addInput" type="text" value={ing} onChange={(e) => setIng(e.target.value)} placeholder="Add an Ingredient.." />
     </form>
   );
 }

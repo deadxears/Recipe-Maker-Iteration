@@ -17,8 +17,10 @@ function mongoToFrontEnd(input) {
 const dbController = {
   // Create new item
   createItem(req, res) {
+    let user = req.headers.cookie.match('(^|;)\\s*' + "user" + '\\s*=\\s*([^;]+)')?.pop() || ''
     const newItem = frontEndParser(req.body);
-    console.log('dbContrline25', req.body);
+    newItem.owner = user
+    console.log("newitem", newItem)
     Item.create(newItem, (err, createdDoc) => {
       if (err) {
         return res.status(400).json(err);
@@ -29,9 +31,12 @@ const dbController = {
   },
 
   // Get all items
+  
 
   findItems(req, res) {
-    Item.find({}, (err, response) => {
+    let user = req.headers.cookie.match('(^|;)\\s*' + "user" + '\\s*=\\s*([^;]+)')?.pop() || ''
+    console.log(user)
+    Item.find({owner: user}, (err, response) => {
       if (err) {
         return res.status(400).json(err);
       } else {

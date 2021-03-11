@@ -37,7 +37,7 @@ function RecipesContainer() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '50px' }}>
+    <div id='recipeContainer'>
       <CardDeck style={{ width: '800px', display: 'flex', flexDirection: 'column' }}>{RecipesDisplay}</CardDeck>
     </div>
   );
