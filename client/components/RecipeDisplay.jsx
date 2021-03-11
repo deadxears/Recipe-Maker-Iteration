@@ -1,7 +1,7 @@
 import React from 'react';
 import parse from 'html-react-parser';
 import { Card } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { useInventory, useSetInventory } from '../contexts/InventoryContexts';
 
 function RecipeDisplay(props) {

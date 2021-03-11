@@ -18,6 +18,7 @@ function InventoryContainer() {
   // this works like componentDidMount and willMount
   // this is will give us the initial state of the inventory
   useEffect(() => {
+
     axios.get('./api/inventory').then((res) => {
       setInventory(res.data);
     });

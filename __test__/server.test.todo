@@ -1,0 +1,69 @@
+//const Item = require('../server/itemModels');
+const request = require('supertest')
+//const server = "http://localhost:3000"
+const path = require('path')
+const app = require('../server/server.js')
+
+// describe('db unit tests', ()=>{
+// instanceof('inputs a new person intot the database', ()=>{
+//     const newPerson.password = "hi"
+// })
+// })
+
+// loginController.signup = (req, res) => {
+//     console.log("hit signup!")
+//     newPerson = req.body
+//      const pass = newPerson.password
+//      const saltRounds = 2
+//      bcrypt.hash(pass, saltRounds)
+//      .then(hash => {
+//      console.log(`Hash: ${hash}`);
+//      Person.create({username: newPerson.username, password: hash}, 
+//        (err, result) =>{
+//          if(err){
+//          return res.status(400).json(err)
+//        } else {
+//          return res.status(200).json(result)
+//        }
+//      });
+//    })}
+
+
+
+   //app.use((req, res) => res.status(404).send('Unknown route!'));
+// describe("Route error handler", ()=>{
+
+//     it('responds with 404 status and unknown route type')
+//     .use()
+//     .request(server)
+//     .expect("Unknown route")
+//     .expect(404)
+//     .done()
+// })
+
+//app.get('/', (req, res) => {
+ //   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+ // });
+  xdescribe('serving static bundle', ()=>{
+      describe('/', ()=>{
+          describe("GET", ()=>{
+              it('responds with 200 status and build files',()=>{
+                  return request(server)
+                  .get('/')
+                  //.sendFiles()
+                  .expect(200)
+                //   .expect('../index.html')
+                //   .done()
+              })
+          })
+      })
+  })
+//   app.use((req, res) => res.status(404).send('Unknown route!'));
+//   describe('error handler', ()=>{
+//       describe.('USE', ()=>{
+//           it("responds with 404 status", ()=>{
+//               return request(server)
+//               .use()
+//           })
+//       })
+//   })

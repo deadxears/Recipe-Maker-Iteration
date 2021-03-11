@@ -76,3 +76,6 @@ typings/
 
 # FuseBox cache
 .fusebox/
+build/*.jsgi
+/__test__/sum.test.js
+sum.js

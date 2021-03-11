@@ -1,5 +1,6 @@
 const Item = require('../itemModels');
 
+
 function frontEndParser(input) {
   const keyName = Object.keys(input)[0];
   return input[keyName];
@@ -14,6 +15,8 @@ function mongoToFrontEnd(input) {
   return newObj;
 }
 
+
+
 const dbController = {
   // Create new item
   createItem(req, res) {
@@ -27,19 +30,19 @@ const dbController = {
       }
     });
   },
-
-  // Get all items
-
-  findItems(req, res) {
+ // if(jwtoken==>grab username ){
+//hen find
+  // Get all icnsttems
+//jwt stuff
+  findItems(req, res){
     Item.find({}, (err, response) => {
       if (err) {
         return res.status(400).json(err);
       } else {
         const parsed = mongoToFrontEnd(response);
-
         res.status(200).json(parsed);
       }
-    });
+    })
   },
 
   // update existing item

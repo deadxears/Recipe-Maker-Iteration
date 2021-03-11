@@ -7,6 +7,7 @@ import { useInventory } from '../contexts/InventoryContexts';
 
 function RecipesContainer() {
   const inventory = useInventory();
+  console.log(inventory, "line 10 recipes containerkdfjfkjslkdfjslf")
   const recipe = useRecipe();
   const setRecipe = useSetRecipe();
  

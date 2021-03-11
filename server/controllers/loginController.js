@@ -1,7 +1,7 @@
 const Person = require('../personModels')
 const fetch = require('node-fetch');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken')
 const loginController = {};
 
  loginController.signup = (req, res) => {
@@ -21,7 +21,7 @@ const loginController = {};
       }
     });
   })}
-   
+ 
 
   loginController.login = (req, res) =>{
     Person.findOne({username: req.body.username}, (err, results) =>{
@@ -30,38 +30,33 @@ const loginController = {};
       .then(result => {
         console.log(res, "true or false pw compare")
         if(result){
+          const token=jwt.sign(req.body.username, process.env.JWT_TOKEN)
+          console.log(token, "tokken")
+          //document.cookie=
+          
           res.redirect('http://localhost:3000/')
         }
+        //possible area for jwt not with cookie because hacking
+        //store in memory-->database
+        //if we do have jwt token thenwe do stufff
     }
     )
     .catch(err => res.status(401).send("no dice"))
   })}
 
 
-  // loginController.login = (req, res) =>{
-  //   console.log("login hit,", req.body.password)
-  //     passport.authenticate('local'),  function(err, user, info) {
-  //       if (err) { return next(err); }
-  //       if (!user) { return res.redirect('/login'); }
-	
-	// // NEED TO CALL req.login()!!!
-  //       req.login(user, next);
-  //   }(req, res, next)
-  // }
-/*  
+  
+//   console.log(token)
+  
+//  document.getElementById("gotTokes").innerHTML = localStorage.getItem("lastname");
+// console.log("look before here")
 
-passport.use(UserDetails.createStrategy());
+// passport.use(UserDetails.createStrategy());
 
-passport.serializeUser(UserDetails.serializeUser());
-passport.deserializeUser(UserDetails.deserializeUser());  
+// passport.serializeUser(UserDetails.serializeUser());
+// passport.deserializeUser(UserDetails.deserializeUser());  
 
-  loginController.login = (req, res, next)=>{
-  let id = req.body maybe
-Item.find({ username: username})
-//possible logic for password 
-if (passwo)
- }
 
-*/
+
 
 module.exports = loginController
