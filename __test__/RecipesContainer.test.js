@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import RecipesContainer from "../client/containers/RecipesContainer.jsx"
 import Item from '../server/itemModels.js';
+import addIngredients from "../client/components/AddIngredient.jsx"
 //import { render, fireEvent, getByTestId} from "react-testing-library";
 //import Item from '../server/itemModels.js';
 //import Adapter from 'enzyme-adapter-react-16';
@@ -9,14 +10,20 @@ import Item from '../server/itemModels.js';
 //import toJson from 'enzyme-to-json'
 
 //import RecipeDisplay from '../client/components/RecipeDisplay.jsx'
+import App from '../client/App.jsx'
+const [ing, setIng] = useState('')
 
+// describe('Recipedisplay renders', ()=>{
+//     mockfn=js.fn(console.log('a function'))
+//     it('ingredients button', ()=>{
+//         expect(onSubmit)
+//     })
+// })
+it("renders without crashing", () => {
+    shallow(<App />);
+  });
+  
 
-
-describe('Recipedisplay renders', ()=>{
-    it('fetches stuff', ()=>{
-        expect(0).toEqual(0)
-    })
-})
 
 // const url = 'https://inuyashasource.tumblr.com/'
 // function fetchMock(url, suffix = "") {
