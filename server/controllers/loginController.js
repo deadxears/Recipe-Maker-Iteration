@@ -1,14 +1,18 @@
 const Person = require('../personModels')
 const fetch = require('node-fetch');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+
+
 const loginController = {};
+
+const secret = "bustedapp"
 
  loginController.signup = (req, res) => {
    console.log("hit signup!")
    newPerson = req.body
     const pass = newPerson.password
-    const saltRounds = 2
+    const saltRounds = 10
     bcrypt.hash(pass, saltRounds)
     .then(hash => {
     console.log(`Hash: ${hash}`);
@@ -25,23 +29,21 @@ const loginController = {};
 
   loginController.login = (req, res) =>{
     Person.findOne({username: req.body.username}, (err, results) =>{
-      console.log("hash?", results)
       bcrypt.compare(req.body.password, results.password)
       .then(result => {
-        console.log(res, "true or false pw compare")
         if(result){
-          const token=jwt.sign(req.body.username, process.env.JWT_TOKEN)
-          console.log(token, "tokken")
-          //document.cookie=
-          
-          res.redirect('http://localhost:3000/')
+          // const userObj = {
+          //   username: req.body.username,
+          // }
+          // const token = jwt.sign(userObj, secret, { expiresIn: '1h' })
+          res.status(200).cookie("user", req.body.username).redirect('/')
         }
         //possible area for jwt not with cookie because hacking
         //store in memory-->database
         //if we do have jwt token thenwe do stufff
     }
     )
-    .catch(err => res.status(401).send("no dice"))
+    .catch(err => res.status(401).send(err))
   })}
 
 
