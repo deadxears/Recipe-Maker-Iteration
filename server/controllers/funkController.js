@@ -50,6 +50,7 @@ funkController.getRecipes = async (req, res, next) => {
   
   console.log('Hit getRecipes!!', req.body);
 
+
   let keyIndex = 5; //2;
   const apiKeys = [
     'f02858b6ebaa4661b821b11a81417390',
@@ -144,6 +145,7 @@ funkController.getRecipes = async (req, res, next) => {
         recipeIngredientsJSON = await recipeIngredients.json();
         return { idIngredients: ID, ingredients: recipeIngredientsJSON };
       })
+    
     );
 
     console.log('recipes:', recipes);
