@@ -49,6 +49,7 @@ funkController.deleteItems = (req, res, next) => {
 funkController.getRecipes = async (req, res, next) => {
   console.log('Hit getRecipes!!', req.body);
 
+
   let keyIndex = 6; //2;
   const apiKeys = [
     'f02858b6ebaa4661b821b11a81417390',
@@ -57,7 +58,8 @@ funkController.getRecipes = async (req, res, next) => {
     '481e5f55d1b74e77b6a2fc9ae79c9d86',
     '4cf36a6587f14b0696a49a36121f1275',
     '05474ef33a92407da94abe6e9afadd75',
-    '347fef89c32d43dab1f5649fab8311d5'
+    '347fef89c32d43dab1f5649fab8311d5',
+    
   ];
   const howManyRecipes = 5;
 
@@ -144,6 +146,7 @@ funkController.getRecipes = async (req, res, next) => {
         recipeIngredientsJSON = await recipeIngredients.json();
         return { idIngredients: ID, ingredients: recipeIngredientsJSON };
       })
+    
     );
 
     console.log('recipes:', recipes);
