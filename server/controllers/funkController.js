@@ -50,7 +50,7 @@ funkController.getRecipes = async (req, res, next) => {
   console.log('Hit getRecipes!!', req.body);
 
 
-  let keyIndex = 0; //2;
+  let keyIndex = 9; //2;
   const apiKeys = [
     'f02858b6ebaa4661b821b11a81417390',
     '44bd1c5c07cd4e6c9453253045409cac',
@@ -60,7 +60,8 @@ funkController.getRecipes = async (req, res, next) => {
     '05474ef33a92407da94abe6e9afadd75',
     '347fef89c32d43dab1f5649fab8311d5',
     '42d20b6ae42c440181f6208601ce0fbc',
-    '3f88f333956a4e62875b70c68a27346b'
+    '3f88f333956a4e62875b70c68a27346b',
+    'a5d4bd34ff224c4eb19997e034dfdc48'
     
   ];
   const howManyRecipes = 5;
